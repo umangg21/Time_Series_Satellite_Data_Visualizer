@@ -15,4 +15,8 @@ Data(folder)
 		1 samples of tif
 	ShapeFile(folder)
 		1 sample of shapefile
+		
+		
+
+Tutorial : https://youtu.be/6Fizcg3U7Ss
 	
