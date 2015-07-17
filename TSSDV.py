@@ -392,7 +392,7 @@ class MyWindowClass(QtGui.QMainWindow,form_class):
         if self.checkBox.isChecked():   # for fix-legend
             self.c1[0][0]=self.maxdata
             self.c1[0][1]=self.mindata
-        plt.imshow(self.c1,cmap=get_cmap(self.colormap),extent=[self.originX,self.lastX,self.lastY,self.originY],aspect='auto')
+        plt.imshow(self.c1,cmap=get_cmap(self.colormap),extent=[self.originX,self.lastX,self.lastY,self.originY])
         plt.text(79.2,31,self.image,fontsize=fs)
         plt.title('2 Interquartile')
         plt.colorbar()
@@ -426,7 +426,7 @@ class MyWindowClass(QtGui.QMainWindow,form_class):
         if self.checkBox.isChecked():       # for Fix-Legend
             self.c1[0][0]=self.maxdata
             self.c1[0][1]=self.mindata
-        plt.imshow(self.c1,cmap=get_cmap(self.colormap),extent=[self.originX,self.lastX,self.lastY,self.originY],aspect='auto')
+        plt.imshow(self.c1,cmap=get_cmap(self.colormap),extent=[self.originX,self.lastX,self.lastY,self.originY])
         plt.text(79.2,31,self.image,fontsize=fs)
         plt.title('Standard Deviation')
         plt.colorbar()
@@ -460,7 +460,7 @@ class MyWindowClass(QtGui.QMainWindow,form_class):
             self.c1[0][0]=self.maxdata
             self.c1[0][1]=self.mindata
         np.place(self.c1,data2,datah)
-        plt.imshow(self.c1,cmap=get_cmap(self.colormap),extent=[self.originX,self.lastX,self.lastY,self.originY],aspect='auto')
+        plt.imshow(self.c1,cmap=get_cmap(self.colormap),extent=[self.originX,self.lastX,self.lastY,self.originY])
         plt.text(79.2,31,self.image,fontsize=fs)
         plt.title('Percentile Clipped')
         plt.colorbar()
