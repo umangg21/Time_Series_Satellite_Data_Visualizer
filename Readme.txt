@@ -9,8 +9,8 @@ files in folder:
 2 Documentation.pdf
 3 globe.ico
 3 Readme.txt
-4 TSSDV.msi
-4 TSSDV.py
+4 TSSDV.rar(TSSDV.msi)
+5 TSSDV.py
 
 Example(folder)
 	clip(folder)
