@@ -2,20 +2,29 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>461</width>
-    <height>389</height>
+    <width>485</width>
+    <height>385</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>485</width>
+    <height>385</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Time Series Satellite Data Visualizer</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>Data/globe.ico</normaloff>Data/globe.ico</iconset>
+    <normaloff>globe.ico</normaloff>globe.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox_3">
@@ -265,7 +274,7 @@
      <string>Enter Folder Fath</string>
     </property>
     <property name="text">
-     <string>Data/clip</string>
+     <string/>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox">
@@ -1003,12 +1012,31 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>461</width>
+     <width>485</width>
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionHelp"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

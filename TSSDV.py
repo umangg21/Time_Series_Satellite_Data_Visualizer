@@ -1,4 +1,4 @@
-import gdal,os,sys,glob,PIL,time,subprocess,uuid
+import gdal,os,sys,glob,PIL,time,subprocess,uuid,FileDialog,abc
 from gdalconst import *
 from numpy import *
 from pylab import *
@@ -17,7 +17,7 @@ form_class=uic.loadUiType("abc.ui")[0]
 class MyWindowClass(QtGui.QMainWindow,form_class):
     
     def __init__(self,parent=None):        
-        QtGui.QMainWindow.__init__(self,parent)        
+        QtGui.QMainWindow.__init__(self,parent)
         self.setupUi(self)
         self.pushButton.clicked.connect(self.pushbutton_clicked)
         self.pushButton_2.clicked.connect(self.pushbutton_2_clicked)
@@ -33,6 +33,8 @@ class MyWindowClass(QtGui.QMainWindow,form_class):
         self.pushButton_6.clicked.connect(self.Mprev)
         self.pushButton_7.clicked.connect(self.Mnext)
         self.pushButton_8.clicked.connect(self.Reset)
+        self.actionHelp.triggered.connect(self.myhelp)
+        self.actionAbout.triggered.connect(self.myabout)
         self.checkBox.stateChanged.connect(self.my)
         self.checkBox_3.stateChanged.connect(self.my)
         self.radioButton.setChecked(True)
@@ -43,10 +45,22 @@ class MyWindowClass(QtGui.QMainWindow,form_class):
         self.strech=0
         self.index=0
         self.icon = QtGui.QIcon()
-        self.icon.addPixmap(QtGui.QPixmap(("Data/globe.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.icon.addPixmap(QtGui.QPixmap(("globe.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.colormap='Greens'
         self.comboBox_2.setCurrentIndex(4)
         self.buttonindicate=0
+
+    def myabout(self):
+        self.msgBox=QtGui.QMessageBox()
+        self.msgBox.setWindowTitle("    About   ")
+        self.msgBox.setWindowIcon(self.icon)
+        self.msgBox.setText("Time Series Satellite Data Visualizer \n                Version: 1.0.0")
+        self.msgBox.exec_()
+        
+
+    def myhelp(self):
+        os.system("documentation.pdf")
+        
 
     def colormaps(self):
         self.colormap=str(self.comboBox_2.currentText())   #get the value of colormap to be selcted     
@@ -569,10 +583,10 @@ class MyWindowClass(QtGui.QMainWindow,form_class):
         self.shapefilename=str(self.lineEdit_2.text())
         a=self.shapefilename.split('/')
         self.shapename='\\'.join(a)
-        
+        dname=os.path.dirname(self.listoftif[0])
         gdal='C:\\Program Files\\GDAL\\gdalwarp.exe -cutline '
         newfoldername=str(uuid.uuid4())
-        new='Data'+ '\\' + newfoldername
+        new=dname+ '\\' + newfoldername
         os.mkdir(new)
         for i in range(len(self.listoftif)):
             bname=os.path.basename(self.listoftif[i])
@@ -580,7 +594,7 @@ class MyWindowClass(QtGui.QMainWindow,form_class):
             mystring=gdal+'"'+self.shapename+'"'+' '+'"'+self.listoftif[i]+'"'+' '+'"'+newcutfile+'"'
             subprocess.check_output(mystring)
 
-        nnew='Data\\'+newfoldername+'\\*.tif'
+        nnew=dname+'\\'+newfoldername+'\\*.tif'
         self.listoftif=glob.glob(nnew)
                 
                
